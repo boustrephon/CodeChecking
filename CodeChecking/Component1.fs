@@ -10,7 +10,7 @@ module HKConc =
     // Concrete strength 
     let e_cu f_cu =
         match f_cu < 60.0 with 
-            | true -> 0.0035
+            | true -> (0.0035)
             | false -> (0.0035 - 0.00006 * (f_cu-60.0)**0.5)
         
     let e_d f_cu = 1000.0 * (3.46 * (f_cu/1.5)**0.5 + 3.21)

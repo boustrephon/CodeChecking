@@ -2,6 +2,8 @@
 // for more guidance on F# programming.
 
 #load "Component1.fs"
+
+open System
 open CodeChecking
 open CodeChecking.HKConc
 
@@ -17,16 +19,15 @@ let res strain f_cu =
     printfn "ConcStress (f_cu=%0.1f, strain=%0.4f) is %0.3f" f_cu strain (ConcStress strain f_cu)
 res -0.0002 70.0
 res 0.00 70.0
-res 0.0004 70.0
 res 0.002 70.0
 res 0.0025 70.0
 res 0.0036 70.0
 
 let strainlist = [0.001;0.002;0.003;0.004]
 let strainseq = seq{0.0 .. 0.1 .. 4.0}
-let strainarray = [| for i in 0 .. 40 -> 0.0001 * float(i) |]
+let strainarray = [| for i in 0 .. 40 -> float(i) * 0.0001 |]
 
-let list2 = [0.2 .. 0.5]. // fails
+let list2 = [0.2 .. 0.5] // fails
 
 
 List.iter (fun x -> printfn "%f" x ) strainlist
@@ -55,4 +56,4 @@ let list4 = seq { 0.001 .. 0.001 .. 0.007 }
 
 let list3 = seq { for i in 1 .. 2 .. 7 -> i * i }
 
-let list5 = seq { for i in 1 .. 7 -> 0.001 * float(i) }
+let list5 = seq { for i in 1 .. 7 -> float(i) * 0.001 }
